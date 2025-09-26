@@ -9,7 +9,7 @@ scikit-learn
 imblearn
 xgboost
 catboost
-pymongo #for mongodb connection 
+pymongo # for mongodb connection 
 from_root
 evidently==0.2.8
 dill
@@ -23,3 +23,6 @@ uvicorn
 jinja2
 python-multipart
 -e .
+# -e . is used to setup my project as a local package so in this project us_visa in my local package
+# why ist imp in side us_visa we have so many coomponent for example i want to import one of these components 
+# in my main.py file so instead of writing long path i can directly import it by just installing this package
