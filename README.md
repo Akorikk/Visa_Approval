@@ -7,3 +7,5 @@ data = df.to_dict(orient="records") # it will convert the csv file to dictionary
 you have to create a data base name inside the cluster and inside database its all the collections
 
 what is Logging whatever statement we are doing in your code  instead of doing the print statement in the terminal we can save in a log file because what happens whenever we production add this particular code in the cloud server there we will be getting any kind of terminal so lets say if any error occur in our application if some kind of failure is there what we can do we can download that particular log file and we can immediately check what is the issue happen inside our code that why logging is very important 
+
+we have to create exception to figure out in which line which file it is having the error and automatically it will figure out 
