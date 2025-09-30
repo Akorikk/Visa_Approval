@@ -18,6 +18,11 @@ after running data ingestion we will get train.csv and test.csv our output
 
 DATA VALIDATION after data ingestion we have to execute nest component which data validation, now if we want to validate the data wht we have to do we have first of all we have to load train.csv and test.csv we have to check this particular data whether the data is in correct format or not if there is any data problem or not so the output i am getting from the firt component thta is the input from the next component which is data validation that means this is my artifact so this is caleed artifact entity this mean we are getting some output and this particualr output we are sending for the next component which is data validation and data validation will execute it will give some output and this particular output i have to send to my next component whicg is our data transformation and again data transformation will give some output will send to next comptnent model trainer and the next component is model evaluation and then model pusher, tht mean whenvevr i am executing the pipeline it is taking some input and generating some output and the output is getting to next component and so on and the output actually we are getting this is nothig but our artifact entity to write entity we have to write config entiy firt import everthing inside constant from our_project_name.constant import *
 
+why i hhave kept mongodb_connection in separate file in configuration because lets say whenvevr i want to do data ingestion so whenever i have to make a connection with my nongodb 
+
+modular coding instead of creating aii the code inside one file we are creating a different files our a folders and there you keeping your code and whenever we required it we are calling thta particular code from there only 
+
+
 entity inside entity we are having two kinds of entity called artifact and config so lets understant what is config entity soto run data ingestion we need constant  constant is nothing just a path let say if i want to create something inside data ingestion folder i have to store inside feature store which is added to constant to manipulate this partivular constant we need something called config entity, what config entity will do it will take the constant and it will make the path 
 
 after daya ingestion we have to execute nest component which data validation
