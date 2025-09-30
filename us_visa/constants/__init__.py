@@ -5,7 +5,7 @@ DATABASE_NAME = "VISA_"
 
 COLLECTION_NAME = "visa_datasrt"
 
-MONGODB_URL_KEY = "mongodb+srv://Abhi:Abhi1@cluste1.nwtqj7j.mongodb.net/?retryWrites=true&w=majority&appName=Cluste1"
+MONGODB_URL_KEY = "MONGODB_URL"
 
 PIPELINE_NAME: str = "us_visa"
 
