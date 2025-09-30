@@ -1,23 +1,42 @@
-import os
-import sys
-
-from pandas import DataFrame
-from sklearn.model_selection import train_test_split
-
-from us_visa.entity.config_entity import DataIngestionConfig
-from us_visa.entity.artifact_entity import DataIngestionArtifact
+from us_visa.configuration.mongoDB_connection import MongoDBClient
+from us_visa.constants import DATABASE_NAME
 from us_visa.exception import USvisaException
-from us_visa.logger import logging
-from us_visa.data_access.usvisa_data import USvisaData
+import pandas as pd
+import sys
+from typing import Optional
+import numpy as np
 
 
 
-class DataIngestion:
-    def __init__(self,data_ingestion_config:DataIngestionConfig=DataIngestionConfig()):
+class USvisaData:
+    """
+    This class help to export entire mongo db record as pandas dataframe
+    """
+
+    def __init__(self):
         """
-        :param data_ingestion_config: configuration for data ingestion
         """
         try:
-            self.data_ingestion_config = data_ingestion_config
+            self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
+        except Exception as e:
+            raise USvisaException(e,sys)
+        
+
+    def export_collection_as_dataframe(self,collection_name:str,database_name:Optional[str]=None)->pd.DataFrame:
+        try:
+            """
+            export entire collectin as dataframe:
+            return pd.DataFrame of collection
+            """
+            if database_name is None:
+                collection = self.mongo_client.database[collection_name]
+            else:
+                collection = self.mongo_client[database_name][collection_name]
+
+            df = pd.DataFrame(list(collection.find()))
+            if "_id" in df.columns.to_list():
+                df = df.drop(columns=["_id"], axis=1)
+            df.replace({"na":np.nan},inplace=True)
+            return df
         except Exception as e:
             raise USvisaException(e,sys)
